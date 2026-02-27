@@ -1,11 +1,16 @@
 services:
-  spark:
+  jupyter:
     image: jupyter/pyspark-notebook:latest
-    container_name: spark_master
+    container_name: spark_notebook
     ports:
-      - "8888:8888" 
-      - "4040:4040" 
+      - "8888:8888"
+      - "4040:4040"
     environment:
-      - JUPYTER_TOKEN=spark
+      - JUPYTER_TOKEN=mourao
     volumes:
       - ./work:/home/jovyan/work
+    working_dir: /home/jovyan/work
+    command: start-notebook.sh --NotebookApp.token=spark
+
+
+  # docker compose up jupyter para abrir o Jupyter.
